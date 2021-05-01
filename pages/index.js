@@ -1,65 +1,83 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <body className={styles.body}>
+      <main className="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div className="container">
+          <div className={styles.logincard}>
+            <div className="row no-gutters">
+              <div className="col-md-5">
+                <img src="/login.jpg" alt="login" className={styles.loginimg} />
+              </div>
+              <div className="col-md-7">
+                <div className={styles.cardbody}>
+                  <div className={styles.brandwrapper}>
+                    <img
+                      src="/logo.svg"
+                      alt="logo"
+                      className={styles.brandwrapper}
+                    />
+                  </div>
+                  <p className={styles.logincarddescription}>
+                    Sign into your account
+                  </p>
+                  <form action="#!">
+                    <div className={styles.formgroup}>
+                      <label htmlFor="email" className="sr-only">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        className={styles.formgroup}
+                        placeholder="Email address"
+                      />
+                    </div>
+                    <div className={styles.formgroup} md={4}>
+                      <label htmlFor="password" className="sr-only">
+                        Password
+                      </label>
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        className="form-control"
+                        placeholder="***********"
+                      />
+                    </div>
+                    <input
+                      name="login"
+                      id="login"
+                      //buton
+                      className={styles.loginbtn}
+                      mb={4}
+                      type="button"
+                      value="Login"
+                    />
+                  </form>
+                  <a href="#!" className={styles.forgotpasswordlink}>
+                    Forgot password?
+                  </a>
+                  <p className={styles.logincardfootertext}>
+                    Don't have an account?
+                    <a href="#!" className="text-reset">
+                      Register here
+                    </a>
+                  </p>
+                  <nav className="login-card-footer-nav">
+                    <a href="#!">Terms of use.</a>
+                    <a href="#!">Privacy policy</a>
+                  </nav>
+                </div>
+              </div>
+              <div className="col-md-7"></div>
+            </div>
+          </div>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+    </body>
+  );
 }
