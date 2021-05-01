@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import axios from "axios";
 import styles from "../styles/Home.module.css";
-
+import NavBar from "../components/Navbar";
 export default function Home() {
   const [data, setData] = useState({ email: "", password: "" });
 
@@ -38,6 +38,8 @@ export default function Home() {
     apiPost();
   };
   return (
+    <>
+    <NavBar/>
     <body className={styles.body}>
       <Container>
         <main className="d-flex align-items-center min-vh-100 p-4 py-md-0">
@@ -55,9 +57,9 @@ export default function Home() {
                   <Card.Body className={styles.logincardbody}>
                     <div className={styles.brandwrapper}>
                       <Image
-                        src="/logo.svg"
+                        src="/chil.svg"
                         alt="logo"
-                        style={{ height: "2em" }}
+                        style={{ height: "8em" }}
                         className={styles.brandwrapper}
                       />
                     </div>
@@ -117,5 +119,6 @@ export default function Home() {
         </main>
       </Container>
     </body>
+    </>
   );
 }
