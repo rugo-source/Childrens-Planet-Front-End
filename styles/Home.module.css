@@ -1,7 +1,11 @@
 .body {
   font-family: "Karla", sans-serif;
-  background-color: #d0d0ce;
-  min-height: 100vh; }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: -webkit-radial-gradient(circle, #00c5ff, #0086ad, #005e7a);
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
 
 .logincard {
   border: 0;
@@ -10,7 +14,7 @@
   overflow: hidden;
 }
 .loginimg {
-  border-radius: 60;
+  border-radius: 0;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -21,14 +25,17 @@
   margin-bottom: 19px;
 }
 .brandwrapper .logo {
-  height: 37px;
+  height: 2rem;
 }
 
 .logincardbody {
-    padding: 85px 60px 60px; }
-    @media (max-width: 422px) {
-      .login-card .card-body {
-        padding: 37px 24px; } }
+  padding: 85px 60px 60px;
+}
+@media (max-width: 422px) {
+  .logincard {
+    padding: 37px 24px;
+  }
+}
 
 .logincarddescription {
   font-size: 25px;
@@ -36,7 +43,7 @@
   font-weight: normal;
   margin-bottom: 23px;
 }
-.logincard form {
+.logincardform {
   max-width: 326px;
 }
 .formcontrol {
