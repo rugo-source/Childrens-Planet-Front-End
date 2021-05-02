@@ -1,104 +1,91 @@
+import { useState } from "react";
 import {
-    Container,
-    Row,
-    Col,
-    Card,
-    Image,
-    Form,
-    Button,
+  Container,
+  Row,
+  Col,
+  Card,
+  Image,
+  Form,
+  Button,
 } from "react-bootstrap";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 const SignUp = () => {
-    return (
-        <div class="main">
-            <section class="signup">
-                <div class="container">
-                    <div class="signup-content">
-                        <form
-                            method="POST"
-                            id="signup-form"
-                            class="signup-form"
-                        >
-                            <h2 class="form-title">Create account</h2>
-                            <div class="form-group">
-                                <input
-                                    type="text"
-                                    class="form-input"
-                                    name="name"
-                                    id="name"
-                                    placeholder="Your Name"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    type="email"
-                                    class="form-input"
-                                    name="email"
-                                    id="email"
-                                    placeholder="Your Email"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    type="text"
-                                    class="form-input"
-                                    name="password"
-                                    id="password"
-                                    placeholder="Password"
-                                />
-                                <span
-                                    toggle="#password"
-                                    class="zmdi zmdi-eye field-icon toggle-password"
-                                ></span>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    type="password"
-                                    class="form-input"
-                                    name="re_password"
-                                    id="re_password"
-                                    placeholder="Repeat your password"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    type="checkbox"
-                                    name="agree-term"
-                                    id="agree-term"
-                                    class="agree-term"
-                                />
-                                <label
-                                    for="agree-term"
-                                    class="label-agree-term"
-                                >
-                                    <span>
-                                        <span></span>
-                                    </span>
-                                    I agree all statements in{" "}
-                                    <a href="#" class="term-service">
-                                        Terms of service
-                                    </a>
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    type="submit"
-                                    name="submit"
-                                    id="submit"
-                                    class="form-submit"
-                                    value="Sign up"
-                                />
-                            </div>
-                        </form>
-                        <p class="loginhere">
-                            Have already an account ?{" "}
-                            <a href="#" class="loginhere-link">
-                                Login here
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </div>
-    );
+    const [startDate, setStartDate] = useState(new Date());
+  return (
+    <div className="main">
+      <Card>
+        <Container className="d-flex justify-content-center">
+          <Card.Body>
+            <Card.Title>
+              <h2 className="form-title">Create account</h2>
+            </Card.Title>
+            <Form>
+              <Form.Row>
+                <Form.Group as={Col} controlId="formGridFirstName">
+                  <Form.Label>First name</Form.Label>
+                  <Form.Control type="fistname" placeholder="First name" />
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="formGridLastName">
+                  <Form.Label>Last name</Form.Label>
+                  <Form.Control type="lastname" placeholder="Last Name" />
+                </Form.Group>
+              </Form.Row>
+
+              <Form.Row>
+                <Form.Group as={Col} controlId="formGridEmail">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control type="email" placeholder="Enter email" />
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="formGridPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control type="password" placeholder="Password" />
+                </Form.Group>
+              </Form.Row>
+
+              <Form.Label
+                className="my-1 mr-2"
+                htmlFor="inlineFormCustomSelectPref"
+              >
+              Birthday
+              </Form.Label>
+              <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+
+              <Form.Group controlId="formGridAddress1">
+                <Form.Label>Address </Form.Label>
+                <Form.Control placeholder="1234 Main St" />
+              </Form.Group>
+
+              <Form.Row>
+                <Form.Group as={Col} controlId="formGridCity">
+                  <Form.Label>City</Form.Label>
+                  <Form.Control />
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="formGridState">
+                  <Form.Label>State</Form.Label>
+                  <Form.Control as="select" defaultValue="Choose...">
+                    <option>Choose...</option>
+                    <option>...</option>
+                  </Form.Control>
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="formGridZip">
+                  <Form.Label>Zip</Form.Label>
+                  <Form.Control />
+                </Form.Group>
+              </Form.Row>
+
+              <Button variant="primary" type="submit">
+                Register
+              </Button>
+            </Form>
+          </Card.Body>
+        </Container>
+      </Card>
+    </div>
+  );
 };
 export default SignUp;
