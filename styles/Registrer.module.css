@@ -1,0 +1,26 @@
+.bg {
+    position: relative;
+    background-size: cover;
+    background-position: 50% 50%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: -webkit-radial-gradient(
+        circle,
+        #00c5ff,
+        #0086ad,
+        #005e7a
+    );
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+.bg::after {
+    content: " ";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    background-color: black;
+    opacity: 0.25;
+    z-index: 1;
+}
