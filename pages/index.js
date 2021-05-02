@@ -42,8 +42,8 @@ export default function Home() {
     <NavBar/>
     <body className={styles.body}>
       <Container>
-        <main className="d-flex align-items-center min-vh-100 p-4 py-md-0">
-          <Container className="p-2 m-4">
+        <main className="d-flex align-items-center min-vh-100 py-md-0">
+          <Container className="p-1 m-4">
             <Card className={styles.logincard}>
               <Row className="no-gutters">
                 <Col md={5}>
