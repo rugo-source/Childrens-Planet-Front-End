@@ -25,9 +25,7 @@ const NavBar = () => {
         <Nav className="mr-auto">
           <Nav.Link href="#features"> Inicio </Nav.Link>
           <NavDropdown title="Usuario" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1"> 
-            Edit user
-            </NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.1">Edit user</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#action/3.2">
               View Reserved

@@ -36,9 +36,15 @@ const SignUp = () => {
     console.log(data);
   };
 
+  useEffect(() => {
+    setData({
+      ...data,
+      date: moment(startDate).format("L"),
+    });
+  }, [startDate]);
+
   return (
     <>
-    
       <Container className="d-flex justify-content-center p-4 py-0">
         <Row className="p-4 py-0">
           <Card className="p-4 py-0">
@@ -94,7 +100,8 @@ const SignUp = () => {
                   <DatePicker
                     dateFormat="yyyy/MM/dd"
                     selected={startDate}
-                    onChange={handleChange}
+                    onChange={(date) => setStartDate(date)}
+                    withPortal
                   />
                 </Form.Group>
                 <Form.Group controlId="formGridAddress1">
