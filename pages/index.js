@@ -39,7 +39,7 @@ export default function Home() {
   };
   return (
     <>
-      <NavBar />
+      
       <body className={styles.body}>
         <Container>
           <main className="d-flex align-items-center min-vh-100 py-md-0">

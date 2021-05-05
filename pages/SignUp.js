@@ -8,6 +8,7 @@ import {
   Form,
   Button,
 } from "react-bootstrap";
+import moment from "moment";
 import NavBar from "../components/Navbar";
 import DatePicker from "react-datepicker";
 import { Countries } from "../constants/info";
@@ -17,6 +18,7 @@ const SignUp = () => {
     name: "",
     email: "",
     password: "",
+    date: "",
     address: "",
     city: "",
     state: "",
@@ -34,18 +36,9 @@ const SignUp = () => {
     console.log(data);
   };
 
-  /*useEffect(() => {
-    const handleChange = (event) => {
-      setData({
-        ...date,
-        startDate,
-      });
-    };
-  }, [startDate]);
-  */
   return (
     <>
-      <NavBar />
+    
       <Container className="d-flex justify-content-center p-4 py-0">
         <Row className="p-4 py-0">
           <Card className="p-4 py-0">
@@ -97,10 +90,11 @@ const SignUp = () => {
                 >
                   Birthday
                 </Form.Label>
-                <Form.Group>
+                <Form.Group name="date">
                   <DatePicker
+                    dateFormat="yyyy/MM/dd"
                     selected={startDate}
-                    onChange={(date) => setStartDate(date)}
+                    onChange={handleChange}
                   />
                 </Form.Group>
                 <Form.Group controlId="formGridAddress1">
