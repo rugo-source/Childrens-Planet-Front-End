@@ -3,9 +3,6 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 const NavBar = () => {
   return (
-		
-
-
     <Navbar
       className="fixed-top shadow-lg"
       collapseOnSelect
@@ -25,39 +22,32 @@ const NavBar = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className=" justify-content-center w-100 mr-5">
-          <ul className="navbar-nav mr-auto mt-2 mt-lg-0 align-items-lg-center">
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="#home"
-                //		onClick={hola}
-                style={{ outline: "0" }}
-              >
-                Inicio <span className="sr-only">(current)</span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <NavDropdown className={styles.dropdown} title="Usuario" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.2">
-                  Editar Usuario
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Ver  Reservacion
-                </NavDropdown.Item>
-              </NavDropdown>
-            </li>
-            <li className="nav-item">
-              <NavDropdown title="Reservacion" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.2">
-                  Registrar Reservacion
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Editar Reservacion
-                </NavDropdown.Item>
-              </NavDropdown>
-            </li>
-          </ul>
+        <Nav className="mr-auto">
+          <Nav.Link href="#features"> Inicio </Nav.Link>
+          <NavDropdown title="Usuario" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="#action/3.1"> 
+            Edit user
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action/3.2">
+              View Reserved
+            </NavDropdown.Item>
+          </NavDropdown>
+          <NavDropdown title="Reservation" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="#action/3.1">
+              Registrar Reservation
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action/3.4">
+              Edit Reservation
+            </NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+        <Nav>
+          <Nav.Link href="#deets">More deets</Nav.Link>
+          <Nav.Link eventKey={2} href="#memes">
+            Dank memes
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
