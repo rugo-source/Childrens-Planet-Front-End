@@ -21,7 +21,9 @@ const Profile = () => {
    return (
     <>
     <NavBar />
+ 
         <Hero/>
+       
     </>
 
    );

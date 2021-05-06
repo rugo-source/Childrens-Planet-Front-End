@@ -1,31 +1,33 @@
-import { Container } from "react-bootstrap";
+import { Container, Button, Card } from "react-bootstrap";
 import styles from "../styles/Hero.module.css";
 const Hero = () => {
   return (
     <>
-      <Container>
-        <div className={styles.hero}>
-          <div className="herimage">
-            <div className="hero__image--overlay"></div>
-            <div className="hero__child hero__child--primary animation--floating"></div>
-            <div className="hero__child hero__child--secondary animation--floating"></div>
-            <p className="hero__title animation--title-in">The flaming mountain</p>
-            <p className="hero__subtitle animation--title-in">by John Blaine</p>
+      <div className={styles.banner}>
+        <Container>
+          <div className={styles.bannertext}>
+            <div className={styles.bannerheading}>Glad to see you here !</div>
+            <div className={styles.bannersubheading}>
+              Here goes the secondary heading on hero banner
+            </div>
+            <Button type="button" className={styles.btnbanner}>
+              Get started
+            </Button>
           </div>
+        </Container>
+      </div>
+      <Container>
+        <div className={styles.textintro}>
+          <h2>About Us</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
+            maxime quam architecto quo inventore harum ex magni, dicta
+            impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Minima maxime quam architecto quo inventore harum ex magni, dicta
+            impedit.
+          </p>
         </div>
       </Container>
-      <div className="section">
-        <h2>A RICK BRANT SCIENCE-ADVENTURE STORY</h2>
-        <hr></hr>
-        <p className="section__text">
-          Rock, melting like butter on a hot stove! It is hard to believe, but
-          that is what happens on San Luz, a small island off the coast of South
-          America. When Rick Brant and his pal Dan Scott fly to the famous
-          resort island to join Rick's father, head of the Spindrift Scientific
-          Foundation, a seemingly inactive volcano is about to explode in an
-          eruption which could easily blow San Luz off the map.
-        </p>
-      </div>
     </>
   );
 };
