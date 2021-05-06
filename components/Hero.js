@@ -4,15 +4,17 @@ const Hero = () => {
   return (
     <>
       <div className={styles.banner}>
-        <Container>
+        <Container className={styles.container}>
           <div className={styles.bannertext}>
             <div className={styles.bannerheading}>Glad to see you here !</div>
             <div className={styles.bannersubheading}>
               Here goes the secondary heading on hero banner
             </div>
-            <Button type="button" className={styles.btnbanner}>
-              Get started
-            </Button>
+            <div className={styles.middle}>
+              <Button type="button" className={styles.btnbanner}>
+                Get started
+              </Button>
+            </div>
           </div>
         </Container>
       </div>
