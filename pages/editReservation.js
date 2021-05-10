@@ -81,7 +81,19 @@ const EditReservation = () => {
                     />
                   </Form.Group>
                 </Form.Row>
-
+                <Form.Row>
+                  <Form.Group as={Col} c>
+                    <Form.Label>Tamaño de grupo</Form.Label>
+                    <Form.Control
+                      required
+                      type="number"
+                      name="peopleCapacity"
+                      min="1"
+                      max="30"
+                      //onChange={handleChangeAddress}
+                    />
+                  </Form.Group>
+                </Form.Row>
                 <Button variant="primary" type="submit">
                   Register
                 </Button>
