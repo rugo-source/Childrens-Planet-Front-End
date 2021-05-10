@@ -25,7 +25,7 @@ export default function Home() {
         router.push("/profile");
       })
       .catch((error) => {
-        console.log(err.response.data);
+        console.log(error.response.data);
       });
   };
   const handleChange = (event) => {
@@ -77,6 +77,7 @@ export default function Home() {
                             Email
                           </Form.Label>
                           <Form.Control
+                            required
                             type="email"
                             name="email"
                             id="email"
@@ -90,6 +91,7 @@ export default function Home() {
                             Password
                           </Form.Label>
                           <Form.Control
+                            required
                             type="password"
                             name="password"
                             id="password"

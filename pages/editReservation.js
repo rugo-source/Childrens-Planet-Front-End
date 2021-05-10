@@ -18,7 +18,7 @@ import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import getDay from "date-fns/getDay";
 
-const SignUpReservation = () => {
+const EditReservation = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [Hora, setHora] = useState(setHours(setMinutes(new Date(), 0), 16));
   const handleChange = (event) => {
@@ -40,13 +40,13 @@ const SignUpReservation = () => {
           <Card className="p-4 py-0">
             <Card.Body>
               <Card.Title>
-                <h2 className="form-title">Create Reservation</h2>
+                <h2 className="form-title"> Edit Reservation</h2>
               </Card.Title>
               <Form>
                 <Form.Row>
                   <Form.Group as={Col} name="hora">
-                    <Form.Label>
-                      Horario de apartado
+                    <Form.Label htmlFor="inlineFormCustomSelectPref">
+                    Horario de apartado
                     </Form.Label>
                     <DatePicker
                       selected={Hora}
@@ -70,8 +70,8 @@ const SignUpReservation = () => {
                     />
                   </Form.Group>
                   <Form.Group as={Col} name="fecha">
-                    <Form.Label >
-                      Fechas de apartado
+                    <Form.Label htmlFor="inlineFormCustomSelectPref">
+                    Fechas de apartado
                     </Form.Label>
                     <DatePicker
                       dateFormat="yyyy/MM/dd"
@@ -93,4 +93,4 @@ const SignUpReservation = () => {
     </>
   );
 };
-export default SignUpReservation;
+export default EditReservation;

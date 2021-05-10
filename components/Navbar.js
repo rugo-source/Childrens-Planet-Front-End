@@ -1,6 +1,6 @@
 import styles from "../styles/Navbar.module.css";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-
+import Link from "next/link";
 const NavBar = () => {
   return (
     <Navbar
@@ -10,38 +10,42 @@ const NavBar = () => {
       bg="light"
       variant="light"
     >
-      <Navbar.Brand className="ml-lg-5">
-        <a
-          className="nav-link"
-          href="#home"
-          //onClick={hola}
-          style={{ outline: "0" }}
-        >
-          <img style={{ height: "2em" }} src={"/chil.svg"} />
-        </a>
-      </Navbar.Brand>
+      <Link href="/profile">
+        <Navbar.Brand className="ml-lg-5">
+          <a
+            className="nav-link"
+            //onClick={hola}
+            style={{ outline: "0" }}
+          >
+            <img style={{ height: "2em" }} src={"/chil.svg"} />
+          </a>
+        </Navbar.Brand>
+      </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#features"> Inicio </Nav.Link>
+          <Link href="/profile">
+            <a className="nav-link">Inicio </a>
+          </Link>
           <NavDropdown title="Usuario" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Edit user</NavDropdown.Item>
-            <NavDropdown.Divider />
+            <Link href="/editUser">
+              <a className="dropdown-item">Edit User</a>
+            </Link>
+
             <NavDropdown.Item href="#action/3.2">
-              View Reserved
+              View Reservations
             </NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title="Reservation" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">
-              Registrar Reservation
-            </NavDropdown.Item>
+            <Link href="/SignUpReservation">
+           <a className="dropdown-item">Registrer Reservation</a>
+            </Link>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
-              Edit Reservation
-            </NavDropdown.Item>
+            <Link href="/editReservation">
+           <a className="dropdown-item">Edit Reservation</a>
+            </Link>
           </NavDropdown>
         </Nav>
-        
       </Navbar.Collapse>
     </Navbar>
   );

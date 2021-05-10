@@ -12,6 +12,7 @@ import {
 import moment from "moment";
 import NavBar from "../components/Navbar";
 import Carrusel from "../components/Carrusel";
+import Text from "../components/Text";
 import DatePicker from "react-datepicker";
 import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
@@ -21,6 +22,7 @@ const Profile = () => {
     <>
       <NavBar />
       <Carrusel />
+      <Text/>
     </>
   );
 };

@@ -5,7 +5,7 @@ import {
   Row,
   Col,
   Card,
-  Image,
+  Alert,
   Form,
   Button,
 } from "react-bootstrap";
@@ -15,8 +15,8 @@ import NavBar from "../components/Navbar";
 import DatePicker from "react-datepicker";
 import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
-const SignUp = () => {
-  const router = useRouter();
+const EditUser = () => {
+  const [startDate, setStartDate] = useState(new Date());
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -24,47 +24,17 @@ const SignUp = () => {
     age: "",
     domicilio: "",
   });
-  const [address, setAddress] = useState({
-    city: "",
-    state: "",
-    zip: 0,
-    address: "",
-  });
-
-  const [startDate, setStartDate] = useState(new Date());
   const handleChange = (event) => {
     setData({
       ...data,
       [event.target.name]: event.target.value,
     });
   };
-
-  const handleChangeAddress = (event) => {
-    setAddress({
-      ...address,
-      [event.target.name]: event.target.value,
-    });
-    setData({
-      ...data,
-      domicilio: `${address.address} ${address.city} ${address.state} ${address.zip}`,
-    });
-  };
-  const handleChangeAddress = (event) => {
-    setAddress({
-      ...address,
-      [event.target.name]: event.target.value,
-    });
-    setData({
-      ...data,
-      domicilio: `${address.address} ${address.city} ${address.state} ${address.zip}`,
-    });
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(data);
     console.log(address);
-    axios
+    /* axios
       .post(`http://localhost:8080/users/registro`, data)
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data));
@@ -74,24 +44,36 @@ const SignUp = () => {
       .catch((error) => {
         console.log(error.response.data);
         //useState error
-      });
+      }); */
   };
-
+  const handleChangeAddress = (event) => {
+    setAddress({
+      ...address,
+      [event.target.name]: event.target.value,
+    });
+    setData({
+      ...data,
+      domicilio: `${address.address} ${address.city} ${address.state} ${address.zip}`,
+    });
+  };
   useEffect(() => {
     setData({
       ...data,
       age: moment(startDate).format("L"),
     });
   }, [startDate]);
-
   return (
     <>
-      <Container className="d-flex justify-content-center p-4 py-0">
+      <NavBar />
+      <Container className="d-flex justify-content-center  py-0">
         <Row className="p-4 py-0">
           <Card className="p-4 py-0">
             <Card.Body>
+              <Alert variant="warning" className="p-3 m-2">
+                Debes de introducir toda la informacion en address.
+              </Alert>
               <Card.Title>
-                <h2 className="form-title">Create account</h2>
+                <h2 className="form-title">Edit account</h2>
               </Card.Title>
               <Form onSubmit={handleSubmit}>
                 <Form.Row>
@@ -105,9 +87,6 @@ const SignUp = () => {
                       onChange={handleChange}
                     />
                   </Form.Group>
-                </Form.Row>
-
-                <Form.Row>
                   <Form.Group as={Col} controlId="formGridEmail">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
@@ -116,18 +95,6 @@ const SignUp = () => {
                       name="email"
                       placeholder="Enter email"
                       onChange={handleChange}
-                    />
-                  </Form.Group>
-
-                  <Form.Group as={Col} controlId="formGridPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                      type="password"
-                      name="password"
-                      placeholder="Password"
-                      required
-                      onChange={handleChange}
-                      min={8}
                     />
                   </Form.Group>
                 </Form.Row>
@@ -214,4 +181,4 @@ const SignUp = () => {
     </>
   );
 };
-export default SignUp;
+export default EditUser;
