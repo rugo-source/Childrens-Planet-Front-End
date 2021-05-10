@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import {
   Container,
   Row,
@@ -8,22 +9,28 @@ import {
   Form,
   Button,
 } from "react-bootstrap";
+import axios from "axios";
 import moment from "moment";
 import NavBar from "../components/Navbar";
 import DatePicker from "react-datepicker";
 import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
 const SignUp = () => {
+  const router = useRouter();
   const [data, setData] = useState({
     name: "",
     email: "",
     password: "",
-    date: "",
-    address: "",
+    age: "",
+    domicilio: "",
+  });
+  const [address, setAddress] = useState({
     city: "",
     state: "",
     zip: 0,
+    address: "",
   });
+
   const [startDate, setStartDate] = useState(new Date());
   const handleChange = (event) => {
     setData({
@@ -31,15 +38,39 @@ const SignUp = () => {
       [event.target.name]: event.target.value,
     });
   };
+
+  const handleChangeAddress = (event) => {
+    setAddress({
+      ...address,
+      [event.target.name]: event.target.value,
+    });
+    setData({
+      ...data,
+      domicilio: `${address.address} ${address.city} ${address.state} ${address.zip}`,
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(data);
+    console.log(address);
+    axios
+      .post(`http://localhost:8080/users/registro`, data)
+      .then((res) => {
+        localStorage.setItem("user", JSON.stringify(res.data));
+        // delay
+        router.push("/profile");
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        //useState error
+      });
   };
 
   useEffect(() => {
     setData({
       ...data,
-      date: moment(startDate).format("L"),
+      age: moment(startDate).format("L"),
     });
   }, [startDate]);
 
@@ -110,14 +141,14 @@ const SignUp = () => {
                     name="address"
                     placeholder="1234 Main St"
                     required
-                    onChange={handleChange}
+                    onChange={handleChangeAddress}
                   />
                 </Form.Group>
 
                 <Form.Row>
                   <Form.Group as={Col} controlId="formGridCity">
                     <Form.Label>City</Form.Label>
-                    <Form.Control name="city" onChange={handleChange} />
+                    <Form.Control name="city" onChange={handleChangeAddress} />
                   </Form.Group>
 
                   <Form.Group as={Col} controlId="formGridState">
@@ -125,7 +156,7 @@ const SignUp = () => {
                     <Form.Control
                       as="select"
                       name="state"
-                      onChange={handleChange}
+                      onChange={handleChangeAddress}
                     >
                       {Countries.map((countries) =>
                         countries === "" ? (
@@ -150,7 +181,7 @@ const SignUp = () => {
                     <Form.Control
                       type="number"
                       name="zip"
-                      onChange={handleChange}
+                      onChange={handleChangeAddress}
                     />
                   </Form.Group>
                 </Form.Row>

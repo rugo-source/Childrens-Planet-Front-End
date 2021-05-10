@@ -16,6 +16,8 @@ import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
+import getDay from "date-fns/getDay";
+
 const SignUpReservation = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [Hora, setHora] = useState(setHours(setMinutes(new Date(), 0), 16));
@@ -25,14 +27,14 @@ const SignUpReservation = () => {
       [event.target.name]: event.target.value,
     });
   };
-  const isWeekday = date => {
+  const isWeekday = (date) => {
     const day = getDay(date);
     return day !== 0 && day !== 7;
   };
 
   return (
     <>
-    <NavBar/>
+      <NavBar />
       <Container className="d-flex justify-content-center p-4 py-0">
         <Row className="p-4 py-0">
           <Card className="p-4 py-0">
@@ -43,11 +45,8 @@ const SignUpReservation = () => {
               <Form>
                 <Form.Row>
                   <Form.Group as={Col} name="hora">
-                    <Form.Label
-                      className="my-1 mr-2"
-                      htmlFor="inlineFormCustomSelectPref"
-                    >
-                      Horario{" "}
+                    <Form.Label htmlFor="inlineFormCustomSelectPref">
+                      Horario
                     </Form.Label>
                     <DatePicker
                       selected={Hora}
@@ -70,32 +69,18 @@ const SignUpReservation = () => {
                       dateFormat="h:mm aa"
                     />
                   </Form.Group>
-                </Form.Row>
-
-                <Form.Row>
                   <Form.Group as={Col} name="fecha">
-                    <Form.Label>Fecha</Form.Label>
+                    <Form.Label htmlFor="inlineFormCustomSelectPref">
+                      Horario
+                    </Form.Label>
                     <DatePicker
+                      dateFormat="yyyy/MM/dd"
                       selected={startDate}
                       onChange={(date) => setStartDate(date)}
+                      filterDate={isWeekday}
                     />
                   </Form.Group>
                 </Form.Row>
-
-                <Form.Label
-                  className="my-1 mr-2"
-                  htmlFor="inlineFormCustomSelectPref"
-                >
-                  Fecha
-                </Form.Label>
-                <Form.Group name="date">
-                  <DatePicker
-                    dateFormat="yyyy/MM/dd"
-                    selected={startDate}
-                    onChange={(date) => setStartDate(date)}
-                    filterDate={isWeekday}
-                  />
-                </Form.Group>
 
                 <Button variant="primary" type="submit">
                   Register

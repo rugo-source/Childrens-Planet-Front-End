@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import {
   Container,
   Row,
@@ -13,13 +14,15 @@ import axios from "axios";
 import styles from "../styles/Home.module.css";
 import NavBar from "../components/Navbar";
 export default function Home() {
+  const router = useRouter();
   const [data, setData] = useState({ email: "", password: "" });
 
   const apiPost = () => {
     axios
-      .post(`http://localhost:8080/`, user)
+      .post(`http://localhost:8080/users/login`, data)
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data));
+        router.push("/profile");
       })
       .catch((error) => {
         console.log(err.response.data);
@@ -39,7 +42,6 @@ export default function Home() {
   };
   return (
     <>
-      
       <body className={styles.body}>
         <Container>
           <main className="d-flex align-items-center min-vh-100 py-md-0">

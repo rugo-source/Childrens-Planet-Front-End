@@ -11,21 +11,17 @@ import {
 } from "react-bootstrap";
 import moment from "moment";
 import NavBar from "../components/Navbar";
-import Hero from "../components/Hero";
+import Carrusel from "../components/Carrusel";
 import DatePicker from "react-datepicker";
 import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Profile = () => {
-
-   return (
+  return (
     <>
-    <NavBar />
- 
-        <Hero/>
-       
+      <NavBar />
+      <Carrusel />
     </>
-
-   );
+  );
 };
 export default Profile;
