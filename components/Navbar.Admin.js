@@ -1,7 +1,14 @@
 import styles from "../styles/Navbar.module.css";
-import { Navbar, Nav, NavDropdown ,Form,Button} from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Form,
+  Button,
+  FormControl,
+} from "react-bootstrap";
 import Link from "next/link";
-const NavBar = () => {
+const NavBarOne = () => {
   return (
     <Navbar
       className="fixed-top shadow-lg"
@@ -24,29 +31,15 @@ const NavBar = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Link href="/profile">
+          <Link href="/profileAdmin">
             <a className="nav-link">Inicio </a>
           </Link>
           <NavDropdown title="Usuario" id="collasible-nav-dropdown">
-            <Link href="/editUser">
-              <a className="dropdown-item">Edit User</a>
-            </Link>
-
-            <NavDropdown.Item href="#action/3.2">
-              View Reservations
-            </NavDropdown.Item>
-          </NavDropdown>
-          <NavDropdown title="Reservation" id="collasible-nav-dropdown">
-            <Link href="/SignUpReservation">
-              <a className="dropdown-item">Registrer Reservation</a>
-            </Link>
-            <NavDropdown.Divider />
-            <Link href="/editReservation">
-              <a className="dropdown-item">Edit Reservation</a>
+            <Link href="/deleteUser">
+              <a className="dropdown-item">Delete User</a>
             </Link>
           </NavDropdown>
         </Nav>
-
         <Nav>
           <Form className="justify-content-end">
             <Button variant="outline-danger">Exit</Button>
@@ -56,4 +49,4 @@ const NavBar = () => {
     </Navbar>
   );
 };
-export default NavBar;
+export default NavBarOne;

@@ -10,7 +10,7 @@ import {
   Nav,
 } from "react-bootstrap";
 import moment from "moment";
-import NavBar from "../components/Navbar";
+import NavBarOne from "../components/Navbar.Admin";
 import Carrusel from "../components/Carrusel";
 import Text from "../components/Text";
 import DatePicker from "react-datepicker";
@@ -20,10 +20,9 @@ import "react-datepicker/dist/react-datepicker.css";
 const Profile = () => {
   return (
     <>
-      <NavBar />
+      <NavBarOne />
       <Carrusel />
-      <Text/>
-    
+   
     </>
   );
 };

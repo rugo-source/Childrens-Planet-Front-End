@@ -49,16 +49,7 @@ const SignUp = () => {
       domicilio: `${address.address} ${address.city} ${address.state} ${address.zip}`,
     });
   };
-  const handleChangeAddress = (event) => {
-    setAddress({
-      ...address,
-      [event.target.name]: event.target.value,
-    });
-    setData({
-      ...data,
-      domicilio: `${address.address} ${address.city} ${address.state} ${address.zip}`,
-    });
-  };
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
