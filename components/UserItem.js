@@ -1,4 +1,9 @@
-const UserItem = ({ name, domicilio, email, age}) => {
+import { Button } from "react-bootstrap";
+const UserItem = ({ name, domicilio, email, age }) => {
+  const handleSubmit = () => {
+    console.log(email);
+  };
+
   return (
     <>
       <tr>
@@ -6,7 +11,11 @@ const UserItem = ({ name, domicilio, email, age}) => {
         <td> {domicilio}</td>
         <td> {email}</td>
         <td> {age}</td>
-        <td></td>
+        <td>
+          <Button variant="danger" onClick={handleSubmit}>
+            Delete
+          </Button>
+        </td>
       </tr>
     </>
   );

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import NavBarOne from "../components/Navbar.Admin";
 import TableUser from "../components/TableUser";
-
 
 const DeleteUser = () => {
   const [user, setUser] = useState([]);
@@ -22,8 +21,12 @@ const DeleteUser = () => {
       <Container className="d-flex align-items-center p-5">
         <Container className="m-5 ">
           <Row>
-            <Col className="table-responsive" md={4} lg={12}>
-              <TableUser users={user} />
+            <Col md={4} lg={12}>
+              <Card className="table-responsive">
+                <Card.Body>
+                  <TableUser users={user} />
+                </Card.Body>
+              </Card>
             </Col>
           </Row>
         </Container>
