@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import axios from "axios";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import NavBarOne from "../components/Navbar.Admin";
@@ -6,15 +7,21 @@ import TableUser from "../components/TableUser";
 
 const DeleteUser = () => {
   const [user, setUser] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/users/users/p")
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((error) => console.log(error.response.data));
-  }, []);
+  const router = useRouter();
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      router.push("/");
+    } else {
+      axios
+        .get("http://localhost:8080/users/users/p")
+        .then((res) => {
+          setUser(res.data);
+        })
+        .catch((error) => console.log(error.response.data));
+    }
+  }, []);
   return (
     <>
       <NavBarOne />

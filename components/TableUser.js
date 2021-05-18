@@ -14,7 +14,13 @@ const TableUser = ({ users }) => {
       </thead>
       <tbody>
         {users.map(({ name, domicilio, email, age }) => (
-          <UserItem name={name} domicilio={domicilio} email={email} age={age} />
+          <UserItem
+            key={name}
+            name={name}
+            domicilio={domicilio}
+            email={email}
+            age={age}
+          />
         ))}
       </tbody>
     </Table>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import {
   Container,
   Row,
@@ -22,7 +23,6 @@ const Profile = () => {
     <>
       <NavBarOne />
       <Carrusel />
-   
     </>
   );
 };

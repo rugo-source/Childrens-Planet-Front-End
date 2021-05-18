@@ -22,7 +22,13 @@ export default function Home() {
       .post(`http://localhost:8080/users/login`, data)
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data));
-        router.push("/profile");
+        if (res.data.role === "USER") {
+          router.push("/profile");
+        } else if (res.data.role === "ADMI") {
+          router.push("/profileAdmin");
+        } else {
+          router.push("/SignUp");
+        }
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -42,7 +48,7 @@ export default function Home() {
   };
   return (
     <>
-      <body className={styles.body}>
+      <section className={styles.body}>
         <Container>
           <main className="d-flex align-items-center min-vh-100 py-md-0">
             <Container>
@@ -122,7 +128,7 @@ export default function Home() {
             </Container>
           </main>
         </Container>
-      </body>
+      </section>
     </>
   );
 }

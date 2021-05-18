@@ -22,8 +22,7 @@ const Profile = () => {
     <>
       <NavBar />
       <Carrusel />
-      <Text/>
-    
+      <Text />
     </>
   );
 };

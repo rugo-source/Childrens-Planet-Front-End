@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import styles from "../styles/Navbar.module.css";
 import {
   Navbar,
@@ -9,6 +11,7 @@ import {
 } from "react-bootstrap";
 import Link from "next/link";
 const NavBarOne = () => {
+  const router = useRouter();
   return (
     <Navbar
       className="fixed-top shadow-lg"
@@ -42,7 +45,15 @@ const NavBarOne = () => {
         </Nav>
         <Nav>
           <Form className="justify-content-end">
-            <Button variant="outline-danger">Exit</Button>
+            <Button
+              variant="outline-danger"
+              onClick={() => {
+                localStorage.removeItem("user");
+                router.push("/");
+              }}
+            >
+              Exit
+            </Button>
           </Form>
         </Nav>
       </Navbar.Collapse>
