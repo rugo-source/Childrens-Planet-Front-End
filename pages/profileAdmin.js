@@ -19,6 +19,13 @@ import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Profile = () => {
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      router.push("/");
+    }
+  }, []);
+
   return (
     <>
       <NavBarOne />
