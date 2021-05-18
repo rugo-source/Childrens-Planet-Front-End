@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap";7
+import { Table } from "react-bootstrap";
 import GamesItem from "./GamesItem";
 const TableGames = ({games}) => {
   return (
@@ -6,7 +6,7 @@ const TableGames = ({games}) => {
       <thead className="thead-dark text-center">
         <tr>
           <th scope="col">Id</th>
-          <th scope="col"> Names</th>
+          <th scope="col">Names</th>
           <th scope="col">Category</th>
           <th scope="col">Amount</th>
     

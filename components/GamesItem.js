@@ -11,11 +11,7 @@ const GamesItem = ({ id, names, category, amount }) => {
         <td> {names}</td>
         <td> {category}</td>
         <td> {amount}</td>
-        <td>
-          <Button variant="danger" onClick={handleSubmit}>
-            Delete
-          </Button>
-        </td>
+      
       </tr>
     </>
   );
