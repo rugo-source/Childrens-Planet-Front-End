@@ -1,7 +1,9 @@
 import styles from "../styles/Navbar.module.css";
-import { Navbar, Nav, NavDropdown ,Form,Button} from "react-bootstrap";
+import { useRouter } from "next/router";
+import { Navbar, Nav, NavDropdown, Form, Button } from "react-bootstrap";
 import Link from "next/link";
 const NavBar = () => {
+  const router = useRouter();
   return (
     <Navbar
       className="fixed-top shadow-lg"
@@ -49,7 +51,15 @@ const NavBar = () => {
 
         <Nav>
           <Form className="justify-content-end">
-            <Button variant="outline-danger">Exit</Button>
+            <Button
+              variant="outline-danger"
+              onClick={() => {
+                localStorage.removeItem("user");
+                router.push("/");
+              }}
+            >
+              Exit
+            </Button>
           </Form>
         </Nav>
       </Navbar.Collapse>

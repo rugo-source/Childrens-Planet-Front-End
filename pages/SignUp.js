@@ -141,7 +141,7 @@ const SignUp = () => {
                   <Form.Label>Address </Form.Label>
                   <Form.Control
                     name="address"
-                    placeholder="1234 Main St"
+                    placeholder="Arquimedes Num.63"
                     required
                     onChange={handleChangeAddress}
                   />

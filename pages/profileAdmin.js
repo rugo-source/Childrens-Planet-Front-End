@@ -18,7 +18,8 @@ import DatePicker from "react-datepicker";
 import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
 
-const Profile = () => {
+const ProfileAdmin = () => {
+  const router = useRouter();
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
@@ -33,4 +34,4 @@ const Profile = () => {
     </>
   );
 };
-export default Profile;
+export default ProfileAdmin;

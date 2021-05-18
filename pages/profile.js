@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import {
   Container,
   Row,
@@ -18,6 +19,13 @@ import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Profile = () => {
+  const router = useRouter();
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      router.push("/");
+    }
+  }, []);
   return (
     <>
       <NavBar />

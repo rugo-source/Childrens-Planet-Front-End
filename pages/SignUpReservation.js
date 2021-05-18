@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import {
   Container,
   Row,
@@ -20,6 +21,7 @@ import getDay from "date-fns/getDay";
 
 const SignUpReservation = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const router = useRouter();
   const [Hora, setHora] = useState(setHours(setMinutes(new Date(), 0), 16));
   const handleChange = (event) => {
     setData({
@@ -32,6 +34,13 @@ const SignUpReservation = () => {
     return day !== 0 && day !== 7;
   };
 
+  
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      router.push("/");
+    }
+  }, []);
   return (
     <>
       <NavBar />

@@ -16,6 +16,7 @@ import DatePicker from "react-datepicker";
 import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
 const EditUser = () => {
+  const router = useRouter();
   const [startDate, setStartDate] = useState(new Date());
   const [data, setData] = useState({
     name: "",
@@ -57,10 +58,15 @@ const EditUser = () => {
     });
   };
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      router.push("/");
+    } else {
     setData({
       ...data,
       age: moment(startDate).format("L"),
     });
+  }
   }, [startDate]);
   return (
     <>
