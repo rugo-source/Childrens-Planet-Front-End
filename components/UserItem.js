@@ -6,9 +6,9 @@ const UserItem = ({ name, domicilio, email, age }) => {
     console.log(email);
 
     axios
-      .post(`http://localhost:8080/users/delete`,data)
+      .post(`http://localhost:8080/users/delete/${email}`)
       .then((res) => {
-        res.send(data);
+        console.log(res);
       })
       .catch((error) => {
         console.log(error.response.data);
