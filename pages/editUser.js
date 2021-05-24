@@ -15,9 +15,16 @@ import NavBar from "../components/Navbar";
 import DatePicker from "react-datepicker";
 import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
+
 const EditUser = () => {
   const router = useRouter();
   const [startDate, setStartDate] = useState(new Date());
+  const [address, setAddress] = useState({
+    address:"",
+    city: "",
+    state:"",
+    zip:0,
+  })
   const [data, setData] = useState({
     name: "",
     email: "",

@@ -15,7 +15,7 @@ const DeleteUser = () => {
       router.push("/");
     } else {
       axios
-        .get("http://localhost:8080/users/users/p")
+        .get("http://localhost:8080/users/users/USER")
         .then((res) => {
           setUser(res.data);
         })
