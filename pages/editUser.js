@@ -19,16 +19,16 @@ import "react-datepicker/dist/react-datepicker.css";
 const EditUser = () => {
   const router = useRouter();
   const [startDate, setStartDate] = useState(new Date());
+  const [user, setUser] = useState([]);
   const [address, setAddress] = useState({
-    address:"",
+    address: "",
     city: "",
-    state:"",
-    zip:0,
-  })
+    state: "",
+    zip: 0,
+  });
   const [data, setData] = useState({
     name: "",
     email: "",
-    password: "",
     age: "",
     domicilio: "",
   });
@@ -42,17 +42,17 @@ const EditUser = () => {
     event.preventDefault();
     console.log(data);
     console.log(address);
-    /* axios
-      .post(`http://localhost:8080/users/registro`, data)
+    axios
+      .put(`http://localhost:8080/users/${user.email}/update`, data)
       .then((res) => {
-        localStorage.setItem("user", JSON.stringify(res.data));
+        localStorage.setItem("user", JSON.stringify(data));
         // delay
         router.push("/profile");
       })
       .catch((error) => {
         console.log(error.response.data);
         //useState error
-      }); */
+      });
   };
   const handleChangeAddress = (event) => {
     setAddress({
@@ -64,16 +64,21 @@ const EditUser = () => {
       domicilio: `${address.address} ${address.city} ${address.state} ${address.zip}`,
     });
   };
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
       router.push("/");
     } else {
+      setUser(user);
+    }
+  }, []);
+
+  useEffect(() => {
     setData({
       ...data,
       age: moment(startDate).format("L"),
     });
-  }
   }, [startDate]);
   return (
     <>
