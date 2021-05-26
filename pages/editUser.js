@@ -40,6 +40,7 @@ const EditUser = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+
     console.log(data);
     console.log(address);
     axios
@@ -59,10 +60,6 @@ const EditUser = () => {
       ...address,
       [event.target.name]: event.target.value,
     });
-    setData({
-      ...data,
-      domicilio: `${address.address} ${address.city} ${address.state} ${address.zip}`,
-    });
   };
 
   useEffect(() => {
@@ -80,6 +77,12 @@ const EditUser = () => {
       age: moment(startDate).format("L"),
     });
   }, [startDate]);
+  useEffect(() => {
+    setData({
+      ...data,
+      domicilio: `${address.address} ${address.city} ${address.state} ${address.zip}`,
+    });
+  }, [address]);
   return (
     <>
       <NavBar />
