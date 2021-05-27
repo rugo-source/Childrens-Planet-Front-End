@@ -1,9 +1,5 @@
-import { Button } from "react-bootstrap";
-const GamesItem = ({ id, names, category, amount }) => {
-  const handleSubmit = () => {
-    console.log(id);
-  };
-
+import { Form } from "react-bootstrap";
+const GamesItem = ({ id, names, category, amount, signUp, Change }) => {
   return (
     <>
       <tr>
@@ -11,7 +7,9 @@ const GamesItem = ({ id, names, category, amount }) => {
         <td> {names}</td>
         <td> {category}</td>
         <td> {amount}</td>
-      
+        {signUp ? (
+          <Form.Control type="number" name={names} onChange={Change} />
+        ) : null}
       </tr>
     </>
   );

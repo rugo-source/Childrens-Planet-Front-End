@@ -14,11 +14,11 @@ import moment from "moment";
 import axios from "axios";
 import NavBar from "../components/Navbar";
 import DatePicker from "react-datepicker";
-import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import getDay from "date-fns/getDay";
+import TableGames from "../components/TableGames";
 
 const EditReservation = () => {
   const [games, setGames] = useState([]);
@@ -39,7 +39,7 @@ const EditReservation = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
       router.push("/");
-    }else{
+    } else {
       axios
         .get("http://localhost:8080/games/games")
         .then((res) => {
@@ -99,7 +99,7 @@ const EditReservation = () => {
                   </Form.Group>
                 </Form.Row>
                 <Form.Row>
-                  <Form.Group as={Col} c>
+                  <Form.Group as={Col}>
                     <Form.Label>Tamaño de grupo</Form.Label>
                     <Form.Control
                       required
@@ -107,14 +107,13 @@ const EditReservation = () => {
                       name="peopleCapacity"
                       min="1"
                       max="30"
-                      //onChange={handleChangeAddress}
                     />
                   </Form.Group>
                 </Form.Row>
                 <Form.Row>
                   <Form.Group>
                     <Form.Label>Tabla juegos</Form.Label>
-                    <TableGames games={games} />
+                    <TableGames games={games} signup />
                   </Form.Group>
                 </Form.Row>
                 <Button variant="primary" type="submit">
