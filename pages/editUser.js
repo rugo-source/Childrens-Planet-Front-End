@@ -192,7 +192,7 @@ const EditUser = () => {
                 </Form.Row>
 
                 <Button variant="primary" type="submit">
-                  Register
+                 Update
                 </Button>
               </Form>
             </Card.Body>

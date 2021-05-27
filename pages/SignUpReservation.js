@@ -10,10 +10,10 @@ import {
   Button,
   Nav,
 } from "react-bootstrap";
-import moment from "moment";
+import axios from "axios";
+import TableGames from "../components/TableGames";
 import NavBar from "../components/Navbar";
 import DatePicker from "react-datepicker";
-import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
@@ -21,6 +21,7 @@ import getDay from "date-fns/getDay";
 
 const SignUpReservation = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const [games, setGames] = useState([]);
   const router = useRouter();
   const [Hora, setHora] = useState(setHours(setMinutes(new Date(), 0), 16));
   const handleChange = (event) => {
@@ -39,6 +40,13 @@ const SignUpReservation = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
       router.push("/");
+    }else{
+      axios
+        .get("http://localhost:8080/games/games")
+        .then((res) => {
+          setGames(res.data);
+        })
+        .catch((error) => console.log(error.response.data));
     }
   }, []);
   return (
@@ -97,6 +105,12 @@ const SignUpReservation = () => {
                       max="30"
                       //onChange={handleChangeAddress}
                     />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group>
+                  <Form.Label>Tabla juegos</Form.Label>
+                  <TableGames games={games} />
                   </Form.Group>
                 </Form.Row>
                 <Button variant="primary" type="submit">

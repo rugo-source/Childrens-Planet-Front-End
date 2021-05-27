@@ -11,6 +11,7 @@ import {
   Nav,
 } from "react-bootstrap";
 import moment from "moment";
+import axios from "axios";
 import NavBar from "../components/Navbar";
 import DatePicker from "react-datepicker";
 import { Countries } from "../constants/info";
@@ -20,6 +21,7 @@ import setMinutes from "date-fns/setMinutes";
 import getDay from "date-fns/getDay";
 
 const EditReservation = () => {
+  const [games, setGames] = useState([]);
   const router = useRouter();
   const [startDate, setStartDate] = useState(new Date());
   const [Hora, setHora] = useState(setHours(setMinutes(new Date(), 0), 16));
@@ -37,6 +39,13 @@ const EditReservation = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
       router.push("/");
+    }else{
+      axios
+        .get("http://localhost:8080/games/games")
+        .then((res) => {
+          setGames(res.data);
+        })
+        .catch((error) => console.log(error.response.data));
     }
   }, []);
 
@@ -54,7 +63,7 @@ const EditReservation = () => {
                 <Form.Row>
                   <Form.Group as={Col} name="hora">
                     <Form.Label htmlFor="inlineFormCustomSelectPref">
-                    Horario de apartado
+                      Horario de apartado
                     </Form.Label>
                     <DatePicker
                       selected={Hora}
@@ -79,7 +88,7 @@ const EditReservation = () => {
                   </Form.Group>
                   <Form.Group as={Col} name="fecha">
                     <Form.Label htmlFor="inlineFormCustomSelectPref">
-                    Fechas de apartado
+                      Fechas de apartado
                     </Form.Label>
                     <DatePicker
                       dateFormat="yyyy/MM/dd"
@@ -100,6 +109,12 @@ const EditReservation = () => {
                       max="30"
                       //onChange={handleChangeAddress}
                     />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group>
+                    <Form.Label>Tabla juegos</Form.Label>
+                    <TableGames games={games} />
                   </Form.Group>
                 </Form.Row>
                 <Button variant="primary" type="submit">
