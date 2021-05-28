@@ -8,10 +8,9 @@ const Text = () => {
           <CardColumns>
             <Card.Img variant="top" src="/about.jpg" />
             <Card.Body>
-              <Card.Title>About US</Card.Title>
+              <Card.Title>Acerca de nosotros</Card.Title>
               <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content.
+              Es una ludoteca gratuita donde los niños pasan un momento agradable mientras desarrollan sus habilidades con base a distintos juegos.  
               </Card.Text>
             </Card.Body>
           </CardColumns>
