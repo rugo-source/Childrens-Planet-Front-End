@@ -20,7 +20,7 @@ const NavBarOne = () => {
       bg="light"
       variant="light"
     >
-      <Link href="/profile">
+      <Link href="/profileAdmin">
         <Navbar.Brand className="ml-lg-5">
           <a
             className="nav-link"

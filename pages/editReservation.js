@@ -113,7 +113,7 @@ const EditReservation = () => {
                 <Form.Row>
                   <Form.Group>
                     <Form.Label>Tabla juegos</Form.Label>
-                    <TableGames games={games} signup />
+                    <TableGames  Change={handleChange} games={games} signup={true} />
                   </Form.Group>
                 </Form.Row>
                 <Button variant="primary" type="submit">

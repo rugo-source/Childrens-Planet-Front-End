@@ -11,27 +11,19 @@ import {
   Nav,
 } from "react-bootstrap";
 import moment from "moment";
-import NavBarOne from "../components/Navbar.Admin";
+import NavBar from "../components/Navbar";
 import Carrusel from "../components/Carrusel";
 import Text from "../components/Text";
 import DatePicker from "react-datepicker";
 import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
-
-const ProfileAdmin = () => {
-  const router = useRouter();
-  useEffect(() => {
-    /* const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) {
-      router.push("/");
-    } */
-  }, []);
-
+const ViewReservation = () => {
   return (
-    <>
-      <NavBarOne />
-      <Carrusel />
-    </>
+  
+  <>
+  <NavBar/>
+  </>
+  
   );
 };
-export default ProfileAdmin;
+export default ViewReservation;

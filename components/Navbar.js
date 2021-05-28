@@ -33,10 +33,10 @@ const NavBar = () => {
             <Link href="/editUser">
               <a className="dropdown-item">Edit User</a>
             </Link>
-
-            <NavDropdown.Item href="#action/3.2">
-              View Reservations
-            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <Link href="/viewReservation">
+              <a className="dropdown-item">View Reservations</a>
+            </Link>
           </NavDropdown>
           <NavDropdown title="Reservation" id="collasible-nav-dropdown">
             <Link href="/SignUpReservation">
