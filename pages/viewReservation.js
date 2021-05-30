@@ -10,20 +10,19 @@ import {
   Button,
   Nav,
 } from "react-bootstrap";
-import moment from "moment";
 import NavBar from "../components/Navbar";
-import Carrusel from "../components/Carrusel";
-import Text from "../components/Text";
-import DatePicker from "react-datepicker";
-import { Countries } from "../constants/info";
-import "react-datepicker/dist/react-datepicker.css";
+import TableReservation from "../components/TableReservation";
 const ViewReservation = () => {
+  const [info, setInfo] = useState([]);
   return (
-  
-  <>
-  <NavBar/>
-  </>
-  
+    <>
+      <NavBar />
+      <Container className="d-flex align-items-center p-5">
+        <Row className="d-flex m-5">
+          <TableReservation info={info} />
+        </Row>
+      </Container>
+    </>
   );
 };
 export default ViewReservation;
