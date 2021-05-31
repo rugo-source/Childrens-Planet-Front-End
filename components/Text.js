@@ -1,4 +1,4 @@
-import { Container, CardColumns, Card,ListGroup,ListGroupItem } from "react-bootstrap";
+import { Container, CardColumns, Card} from "react-bootstrap";
 import styles from "../styles/Hero.module.css";
 const Text = () => {
   return (
