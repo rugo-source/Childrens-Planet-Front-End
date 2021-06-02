@@ -1,7 +1,15 @@
 import styles from "../styles/Navbar.module.css";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Container,
+  Button,
+  Row,
+  Col,
+} from "react-bootstrap";
 import Link from "next/link";
 const NavBar = () => {
   const router = useRouter();
@@ -56,19 +64,20 @@ const NavBar = () => {
         </Nav>
 
         <Nav>
-          <NavDropdown title="Bienvenido " id="collasible-nav-dropdown">
-            <Container className="justify-content-md-center">
-              <Button
-                variant="outline-danger"
-                size="lg"
-                onClick={() => {
-                  localStorage.removeItem("user");
-                  router.push("/");
-                }}
-              >
-                Exit
-              </Button>
-            </Container>
+          <NavDropdown
+            title={`Bienvenido ${user.name}`}
+            id="collasible-nav-dropdown"
+          >
+            <Button
+              className="col col-12"
+              variant="outline-danger"
+              onClick={() => {
+                localStorage.removeItem("user");
+                router.push("/");
+              }}
+            >
+              Exit
+            </Button>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

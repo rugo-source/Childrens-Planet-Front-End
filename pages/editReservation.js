@@ -110,7 +110,7 @@ const EditReservation = () => {
                     />
                   </Form.Group>
                 </Form.Row>
-                <Form.Row>
+                <Form.Row className="d-flex justify-content-sm-center">
                   <Form.Group>
                     <Form.Label>Tabla juegos</Form.Label>
                     <TableGames  Change={handleChange} games={games} signup={true} />

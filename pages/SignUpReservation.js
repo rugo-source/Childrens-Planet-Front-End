@@ -12,27 +12,28 @@ import getDay from "date-fns/getDay";
 
 const SignUpReservation = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const[checked,setChecked]=useState(false);
   const [data, setData] = useState({
-    'trompos de cuerdas':0,
-    patines:0,
-    pelota:0,
-    yoyos:0,
-    bolos:0,
-    marinetas:0,
-    diabolos:0,
-    muñecas:0,
-    'pistas de coche':0,
-    vehiculos:0,
-    karaoke:0,
-    'juego de modelismo':0,
-    'juegos de mesa clasicos':0,
-    pelotas:0,
-    monopatines:0,
-    futboline:0,
-    'cancha de futbol':0,
-    'pinturas con caballete':0,
-    'puzzles de hasta 500 piezas':0,
-    'juegos de cartas coleccionables':0,
+    'trompos de cuerdas':false,
+    patines:false,
+    pelota:false,
+    yoyos:false,
+    bolos:false,
+    marinetas:false,
+    diabolos:false,
+    muñecas:false,
+    'pistas de coche':false,
+    vehiculos:false,
+    karaoke:false,
+    'juego de modelismo':false,
+    'juegos de mesa clasicos':false,
+    pelotas:false,
+    monopatines:false,
+    futboline:false,
+    'cancha de futbol':false,
+    'pinturas con caballete':false,
+    'puzzles de hasta 500 piezas':false,
+    'juegos de cartas coleccionables':false,
     peopleCapacity:0
 
   });
@@ -46,7 +47,8 @@ const SignUpReservation = () => {
   const handleChange = (event) => {
     setData({
       ...data,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.checked,
+
     });
   };
   const isWeekday = (date) => {
@@ -59,12 +61,13 @@ const SignUpReservation = () => {
     if (!user) {
       router.push("/");
     } else {
-      axios
-        .get("http://localhost:8080/games/games")
-        .then((res) => {
-          setGames(res.data);
-        })
-        .catch((error) => console.log(error.response.data));
+    axios
+     .get("http://localhost:8080/games/games")
+     .then((res) => {
+       setGames(res.data);
+      })
+     .catch((error) => console.log(error.response.data));
+    
     }
   }, []);
   return (
@@ -125,10 +128,10 @@ const SignUpReservation = () => {
                     />
                   </Form.Group>
                 </Form.Row>
-                <Form.Row>
+                <Form.Row className="d-flex justify-content-sm-center">
                   <Form.Group>
                     <Form.Label>Tabla juegos</Form.Label>
-                    <TableGames Change={handleChange} games={games} signup={true} />
+                    <TableGames Change={handleChange} data={data} games={games} signup={true} checked={checked} />
                   </Form.Group>
                 </Form.Row>
                 <Button variant="primary" type="submit">

@@ -1,6 +1,6 @@
 import { Table } from "react-bootstrap";
 import GamesItem from "./GamesItem";
-const TableGames = ({ games, signup, Change }) => {
+const TableGames = ({ games, signup, Change,checked,data }) => {
   return (
     <Table className="table table-hover" id="home">
       <thead className="thead-dark text-center">
@@ -9,7 +9,7 @@ const TableGames = ({ games, signup, Change }) => {
           <th scope="col">Names</th>
           <th scope="col">Category</th>
           <th scope="col">Amount</th>
-          {signup ? <th scope="col"> select </th> : null}
+          {signup ? <th scope="col"> Select </th> : null}
         </tr>
       </thead>
       <tbody>
@@ -21,6 +21,8 @@ const TableGames = ({ games, signup, Change }) => {
             amount={amount}
             signUp={signup}
             Change={Change}
+            checked={hecked}
+            
           />
         ))}
       </tbody>
