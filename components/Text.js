@@ -10,7 +10,8 @@ const Text = () => {
             <Card.Body>
               <Card.Title>Acerca de nosotros</Card.Title>
               <Card.Text>
-              Es una ludoteca gratuita donde los niños pasan un momento agradable mientras desarrollan sus habilidades con base a distintos juegos.  
+              Es una ludoteca gratuita donde los niños pasan un momento agradable mientras
+              desarrollan sus habilidades con base a distintos juegos.  
               </Card.Text>
             </Card.Body>
           </CardColumns>
