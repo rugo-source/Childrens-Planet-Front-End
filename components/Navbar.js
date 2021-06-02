@@ -1,9 +1,15 @@
 import styles from "../styles/Navbar.module.css";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { Navbar, Nav, NavDropdown, Form, Button } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap";
 import Link from "next/link";
 const NavBar = () => {
   const router = useRouter();
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    setUser(user);
+  }, []);
   return (
     <Navbar
       className="fixed-top shadow-lg"
@@ -50,17 +56,20 @@ const NavBar = () => {
         </Nav>
 
         <Nav>
-          <Form className="justify-content-end">
-            <Button
-              variant="outline-danger"
-              onClick={() => {
-                localStorage.removeItem("user");
-                router.push("/");
-              }}
-            >
-              Exit
-            </Button>
-          </Form>
+          <NavDropdown title="Bienvenido " id="collasible-nav-dropdown">
+            <Container className="justify-content-md-center">
+              <Button
+                variant="outline-danger"
+                size="lg"
+                onClick={() => {
+                  localStorage.removeItem("user");
+                  router.push("/");
+                }}
+              >
+                Exit
+              </Button>
+            </Container>
+          </NavDropdown>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
