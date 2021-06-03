@@ -12,7 +12,6 @@ import getDay from "date-fns/getDay";
 
 const SignUpReservation = () => {
   const [startDate, setStartDate] = useState(new Date());
-  const[checked,setChecked]=useState(false);
   const [data, setData] = useState({
     'trompos de cuerdas':false,
     patines:false,
@@ -34,8 +33,6 @@ const SignUpReservation = () => {
     'pinturas con caballete':false,
     'puzzles de hasta 500 piezas':false,
     'juegos de cartas coleccionables':false,
-    peopleCapacity:0
-
   });
   const [games, setGames] = useState([]);
   const router = useRouter();
@@ -131,7 +128,7 @@ const SignUpReservation = () => {
                 <Form.Row className="d-flex justify-content-sm-center">
                   <Form.Group>
                     <Form.Label>Tabla juegos</Form.Label>
-                    <TableGames Change={handleChange} data={data} games={games} signup={true} checked={checked} />
+                    <TableGames Change={handleChange} data={data} games={games} signup={true} />
                   </Form.Group>
                 </Form.Row>
                 <Button variant="primary" type="submit">

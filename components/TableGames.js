@@ -1,6 +1,6 @@
 import { Table } from "react-bootstrap";
 import GamesItem from "./GamesItem";
-const TableGames = ({ games, signup, Change,checked,data }) => {
+const TableGames = ({ games, signup, Change}) => {
   return (
     <Table className="table table-hover" id="home">
       <thead className="thead-dark text-center">
@@ -15,14 +15,13 @@ const TableGames = ({ games, signup, Change,checked,data }) => {
       <tbody>
         {games.map(({ id, names, category, amount }) => (
           <GamesItem
+            key={names}
             id={id}
             names={names}
             category={category}
             amount={amount}
             signUp={signup}
-            Change={Change}
-            checked={hecked}
-            
+            Change={Change} 
           />
         ))}
       </tbody>

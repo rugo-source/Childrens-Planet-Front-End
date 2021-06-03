@@ -1,5 +1,5 @@
 import { Form } from "react-bootstrap";
-const GamesItem = ({ id, names, category, amount, signUp, Change ,checked }) => {
+const GamesItem = ({ id, names, category, amount, signUp, Change }) => {
   return (
     <>
       <tr>
@@ -8,7 +8,7 @@ const GamesItem = ({ id, names, category, amount, signUp, Change ,checked }) => 
         <td> {category}</td>
         <td> {amount}</td>
         {signUp ? (
-          <Form.Control type="checkbox" name={names} onChange={Change} checked={checked}/>
+          <Form.Control type="checkbox" name={names} onChange={Change} />
         ) : null}
       </tr>
     </>
