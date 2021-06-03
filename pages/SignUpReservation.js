@@ -128,7 +128,7 @@ const SignUpReservation = () => {
                 <Form.Row className="d-flex justify-content-sm-center">
                   <Form.Group>
                     <Form.Label>Tabla juegos</Form.Label>
-                    <TableGames Change={handleChange} data={data} games={games} signup={true} />
+                    <TableGames Change={handleChange} data={data} games={games} signup />
                   </Form.Group>
                 </Form.Row>
                 <Button variant="primary" type="submit">
