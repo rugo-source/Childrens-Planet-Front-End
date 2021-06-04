@@ -72,7 +72,7 @@ export default function Home() {
                         />
                       </div>
                       <Card.Text className={styles.logincarddescription}>
-                        Sign into your account
+                        Iniciar sesión
                       </Card.Text>
                       <Form
                         className={styles.logincardform}
@@ -88,7 +88,7 @@ export default function Home() {
                             name="email"
                             id="email"
                             className={styles.formgroup}
-                            placeholder="Email address"
+                            placeholder="example@example.com"
                             onChange={handleChange}
                           />
                         </Form.Group>
@@ -112,13 +112,13 @@ export default function Home() {
                           className={styles.loginbtn}
                           mb={4}
                           type="submit"
-                          value="Login"
+                          value="Ingresar"
                         />
                       </Form>
                       <Card.Text className={styles.logincardfootertext}>
-                        Don't have an account?
+                        No tienes una cuenta?
                         <Link href="/SignUp" className="text-reset">
-                          Register here
+                          Registrate aquí
                         </Link>
                       </Card.Text>
                     </Card.Body>

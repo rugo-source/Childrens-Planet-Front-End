@@ -65,7 +65,7 @@ const NavBar = () => {
 
         <Nav>
           <NavDropdown
-            title={`Bienvenido ${user.name}`}
+            //title={`Bienvenido ${user.name}`}
             id="collasible-nav-dropdown"
           >
             <Button
