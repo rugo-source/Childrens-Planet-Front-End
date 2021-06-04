@@ -9,62 +9,99 @@ import "react-datepicker/dist/react-datepicker.css";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import getDay from "date-fns/getDay";
+import ObjectTransform from "../constants/ObjectTrasform";
 
 const SignUpReservation = () => {
+  const signUp = "true";
+  let places;
+  const [user, setUser] = useState({});
+  const [info, setInfo] = useState({
+    email: "",
+    horario: 0,
+    day: "7",
+    game: [],
+    peopleCapacity: 0,
+  });
   const [startDate, setStartDate] = useState(new Date());
   const [data, setData] = useState({
-    'trompos de cuerdas':false,
-    patines:false,
-    pelota:false,
-    yoyos:false,
-    bolos:false,
-    marinetas:false,
-    diabolos:false,
-    muñecas:false,
-    'pistas de coche':false,
-    vehiculos:false,
-    karaoke:false,
-    'juego de modelismo':false,
-    'juegos de mesa clasicos':false,
-    pelotas:false,
-    monopatines:false,
-    futboline:false,
-    'cancha de futbol':false,
-    'pinturas con caballete':false,
-    'puzzles de hasta 500 piezas':false,
-    'juegos de cartas coleccionables':false,
+    "trompos de cuerdas": false,
+    patines: false,
+    pelota: false,
+    yoyos: false,
+    bolos: false,
+    marinetas: false,
+    diabolos: false,
+    muñecas: false,
+    "pistas de coche": false,
+    vehiculos: false,
+    karaoke: false,
+    "juego de modelismo": false,
+    "juegos de mesa clasicos": false,
+    pelotas: false,
+    monopatines: false,
+    futboline: false,
+    "cancha de futbol": false,
+    "pinturas con caballete": false,
+    "puzzles de hasta 500 piezas": false,
+    "juegos de cartas coleccionables": false,
   });
   const [games, setGames] = useState([]);
   const router = useRouter();
   const [Hora, setHora] = useState(setHours(setMinutes(new Date(), 0), 16));
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(user);
+    console.log(places);
+
+    setInfo({
+      ...info,
+      horario: 12,
+      day: "7",
+      peopleCapacity: 6,
+    });
+    console.log(info);
+    //axios
+    //.post("http://localhost:8080/resev/reservation", info)
+    //.then((res) => console.log(res))
+    //.catch((err) => console.log(err.response.data));
+
     console.log(data);
   };
   const handleChange = (event) => {
     setData({
       ...data,
       [event.target.name]: event.target.checked,
-
     });
   };
   const isWeekday = (date) => {
     const day = getDay(date);
     return day !== 0 && day !== 7;
   };
+  useEffect(() => {
+    places = ObjectTransform(data);
+    console.log(places);
+    setInfo({
+      ...info,
+      game: places,
+    });
+  }, [data]);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
+    setInfo({
+      email: user.email,
+    });
     if (!user) {
       router.push("/");
     } else {
-    axios
-     .get("http://localhost:8080/games/games")
-     .then((res) => {
-       setGames(res.data);
-      })
-     .catch((error) => console.log(error.response.data));
-    
+      setUser(user);
+      axios
+        .get("http://localhost:8080/games/games")
+        .then((res) => {
+          setGames(res.data);
+        })
+        .catch((error) => console.log(error.response.data));
     }
   }, []);
   return (
@@ -128,7 +165,12 @@ const SignUpReservation = () => {
                 <Form.Row className="d-flex justify-content-sm-center">
                   <Form.Group>
                     <Form.Label>Tabla juegos</Form.Label>
-                    <TableGames Change={handleChange} data={data} games={games} signup />
+                    <TableGames
+                      Change={handleChange}
+                      data={data}
+                      games={games}
+                      signup={signUp}
+                    />
                   </Form.Group>
                 </Form.Row>
                 <Button variant="primary" type="submit">

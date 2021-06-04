@@ -7,7 +7,7 @@ const GamesItem = ({ id, names, category, amount, signUp, Change }) => {
         <td> {names}</td>
         <td> {category}</td>
         <td> {amount}</td>
-        {signUp ? (
+        {signUp === "true" ? (
           <Form.Control type="checkbox" name={names} onChange={Change} />
         ) : null}
       </tr>
