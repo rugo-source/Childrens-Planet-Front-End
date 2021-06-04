@@ -6,7 +6,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: -webkit-radial-gradient(circle, #00c5ff, #66DBF3, #85EAFF);
+  background-image: -webkit-radial-gradient(circle  #98e7ff 0, #3cb5f2 50%, #0085ce 100%);
   background-repeat: no-repeat;
   min-height: 100vh;
 }
