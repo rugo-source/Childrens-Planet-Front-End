@@ -10,6 +10,7 @@ import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import getDay from "date-fns/getDay";
 import ObjectTransform from "../constants/ObjectTrasform";
+import moment from "moment";
 
 const SignUpReservation = () => {
   const signUp = "true";
@@ -17,8 +18,8 @@ const SignUpReservation = () => {
   const [user, setUser] = useState({});
   const [info, setInfo] = useState({
     email: "",
-    horario: 0,
-    day: "7",
+    horario: "",
+    day: "",
     game: [],
     peopleCapacity: 0,
   });
@@ -49,24 +50,24 @@ const SignUpReservation = () => {
   const router = useRouter();
   const [Hora, setHora] = useState(setHours(setMinutes(new Date(), 0), 16));
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     console.log(user);
     console.log(places);
 
-    setInfo({
-      ...info,
-      horario: 12,
-      day: "7",
-      peopleCapacity: 6,
-    });
     console.log(info);
-    //axios
-    //.post("http://localhost:8080/resev/reservation", info)
-    //.then((res) => console.log(res))
-    //.catch((err) => console.log(err.response.data));
+    axios
+    .post("http://localhost:8080/resev/reservation", info)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err.response.data));
 
     console.log(data);
+  };
+  const handleOnchange = (event) => {
+    setInfo({
+      ...info,
+      [event.target.name]: event.target.value,
+    });
   };
   const handleChange = (event) => {
     setData({
@@ -87,6 +88,21 @@ const SignUpReservation = () => {
     });
   }, [data]);
 
+  useEffect(() => {
+    console.log("day");
+    setInfo({
+      ...info,
+      day: moment(startDate).format("L"),
+    });
+  }, [startDate]);
+
+  useEffect(() => {
+    console.log("horario")
+    setInfo({
+      ...info,
+      horario: moment(Hora).format('h:mm:ss a'),
+    });
+  },[Hora]);
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     setInfo({
@@ -158,7 +174,7 @@ const SignUpReservation = () => {
                       name="peopleCapacity"
                       min="1"
                       max="30"
-                      onChange={handleChange}
+                      onChange={handleOnchange}
                     />
                   </Form.Group>
                 </Form.Row>
