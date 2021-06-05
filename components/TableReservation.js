@@ -1,5 +1,5 @@
 import { Table } from "react-bootstrap";
-import UserItem from "./UserItem";
+import ReservationItem from "./ReservationItem";
 const TableReservation = ({info}) => {
   return (
     <Table className="pr-2">
@@ -9,12 +9,13 @@ const TableReservation = ({info}) => {
           <th scope="col">Horario</th>
           <th scope="col">Dia</th>
           <th scope="col">People</th>
-          <th scope="col">Delete</th>
+          <th scope="col">Games</th>
+          
         </tr>
       </thead>
       <tbody>
         {info.map(({ id,horario , day, peopleCapacity }) => (
-          <UserItem
+          <ReservationItem
             key={id}
             id={id}
             horario={horario}

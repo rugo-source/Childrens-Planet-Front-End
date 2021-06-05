@@ -13,17 +13,17 @@ const Profile = () => {
   const [games, setGames] = useState([]);
   const router = useRouter();
   useEffect(() => {
-    /*  const user = JSON.parse(localStorage.getItem("user"));
+      const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
       router.push("/");
-    } else { */
+    } else { 
     axios
       .get("http://localhost:8080/games/games")
       .then((res) => {
         setGames(res.data);
       })
       .catch((error) => console.log(error.response.data));
-    //}
+    }
   }, []);
   return (
     <>
