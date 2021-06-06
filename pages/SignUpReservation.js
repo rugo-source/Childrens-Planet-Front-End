@@ -57,9 +57,9 @@ const SignUpReservation = () => {
 
     console.log(info);
     axios
-    .post("http://localhost:8080/resev/reservation", info)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err.response.data));
+      .post("http://localhost:8080/resev/reservation", info)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err.response.data));
 
     console.log(data);
   };
@@ -97,12 +97,12 @@ const SignUpReservation = () => {
   }, [startDate]);
 
   useEffect(() => {
-    console.log("horario")
+    console.log("horario");
     setInfo({
       ...info,
-      horario: moment(Hora).format('h:mm:ss a'),
+      horario: moment(Hora).format("h:mm:ss a"),
     });
-  },[Hora]);
+  }, [Hora]);
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     setInfo({
@@ -138,6 +138,8 @@ const SignUpReservation = () => {
                       selected={Hora}
                       onChange={(date) => setHora(date)}
                       showTimeSelect
+                      placeholderText="Click to select a timegit"
+                      isClearable={true}
                       showTimeSelectOnly
                       timeIntervals={60}
                       timeCaption="Time"
@@ -162,7 +164,11 @@ const SignUpReservation = () => {
                       selected={startDate}
                       onChange={(date) => setStartDate(date)}
                       filterDate={isWeekday}
+                      isClearable={true}
+                      placeholderText="Click to select a date"
+                      
                     />
+                   
                   </Form.Group>
                 </Form.Row>
                 <Form.Row>
@@ -170,6 +176,7 @@ const SignUpReservation = () => {
                     <Form.Label>Tamaño de grupo</Form.Label>
                     <Form.Control
                       required
+                      placeholder="Enter your group size "
                       type="number"
                       name="peopleCapacity"
                       min="1"
