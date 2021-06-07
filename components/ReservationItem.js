@@ -2,7 +2,6 @@ const ReservationItem = ({ idR, horario, day, peopleCapacity, games }) => {
   return (
     <>
       <tr>
-        <td> {idR}</td>
         <td> {horario}</td>
         <td> {day}</td>
         <td> {peopleCapacity}</td>

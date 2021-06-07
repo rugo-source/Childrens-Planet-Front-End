@@ -13,6 +13,7 @@ import ObjectTransform from "../constants/ObjectTrasform";
 import moment from "moment";
 
 const SignUpReservation = () => {
+  const router = useRouter();
   const signUp = "true";
   let places;
   const [user, setUser] = useState({});
@@ -47,7 +48,7 @@ const SignUpReservation = () => {
     "juegos de cartas coleccionables": false,
   });
   const [games, setGames] = useState([]);
-  const router = useRouter();
+
   const [Hora, setHora] = useState(setHours(setMinutes(new Date(), 0), 16));
 
   const handleSubmit = (event) => {
@@ -58,7 +59,7 @@ const SignUpReservation = () => {
     console.log(info);
     axios
       .post("http://localhost:8080/resev/reservation", info)
-      .then((res) => console.log(res))
+      .then((res) => console.log(res) ,router.push("/profile"))
       .catch((err) => console.log(err.response.data));
 
     console.log(data);
@@ -108,11 +109,13 @@ const SignUpReservation = () => {
     setInfo({
       email: user.email,
     });
+    
     if (!user) {
       router.push("/");
     } else {
       setUser(user);
       axios
+
         .get("http://localhost:8080/games/games")
         .then((res) => {
           setGames(res.data);
@@ -166,9 +169,7 @@ const SignUpReservation = () => {
                       filterDate={isWeekday}
                       isClearable={true}
                       placeholderText="Click to select a date"
-                      
                     />
-                   
                   </Form.Group>
                 </Form.Row>
                 <Form.Row>

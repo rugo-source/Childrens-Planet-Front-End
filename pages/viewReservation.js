@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row ,Col,Card} from "react-bootstrap";
 import axios from "axios";
 import NavBar from "../components/Navbar";
 import TableReservation from "../components/TableReservation";
@@ -38,13 +38,26 @@ const ViewReservation = () => {
     <>
       <NavBar />
       <Container className="d-flex align-items-center p-5">
-        <Row className="d-flex m-5">
-          {!reservation ? (
-            <p> No hay reservation</p>
-          ) : (
-            <TableReservation reservation={reservation} games={table} />
-          )}
-        </Row>
+        <Container className=" align-items-center p-2 ">
+          <Row>
+            <Col md={4} lg={12}>
+              <Card className="table-responsive p-2 m-3">
+                <Card.Body>
+                  <Row className="d-flex ">
+                    {!reservation ? (
+                      <p> No hay reservation</p>
+                    ) : (
+                      <TableReservation
+                        reservation={reservation}
+                        games={table}
+                      />
+                    )}
+                  </Row>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </Container>
     </>
   );

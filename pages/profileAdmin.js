@@ -21,10 +21,10 @@ import "react-datepicker/dist/react-datepicker.css";
 const ProfileAdmin = () => {
   const router = useRouter();
   useEffect(() => {
-    /* const user = JSON.parse(localStorage.getItem("user"));
+     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
       router.push("/");
-    } */
+    } 
   }, []);
 
   return (

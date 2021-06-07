@@ -5,7 +5,7 @@ const TableReservation = ({ reservation, games }) => {
     <Table className="pr-2">
       <thead className="thead-dark text-center">
         <tr>
-          <th scope="col">Id</th>
+          
           <th scope="col">Horario</th>
           <th scope="col">Dia</th>
           <th scope="col">People</th>

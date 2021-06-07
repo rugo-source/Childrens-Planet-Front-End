@@ -17,6 +17,7 @@ import { Countries } from "../constants/info";
 import "react-datepicker/dist/react-datepicker.css";
 
 const EditUser = () => {
+  const [error, setError] = useState();
   const router = useRouter();
   const [startDate, setStartDate] = useState(new Date());
   const [user, setUser] = useState([]);
@@ -47,7 +48,6 @@ const EditUser = () => {
       .put(`http://localhost:8080/users/${user.email}/update`, data)
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(data));
-        // delay
         router.push("/profile");
       })
       .catch((error) => {
@@ -91,7 +91,7 @@ const EditUser = () => {
           <Card className="p-4 py-0">
             <Card.Body>
               <Alert variant="warning" className="p-3 m-2">
-                Debes de introducir toda la informacion en address.
+                Debes de introducir toda la informacion nuevamente.
               </Alert>
               <Card.Title>
                 <h2 className="form-title">Edit account</h2>
