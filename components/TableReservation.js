@@ -1,6 +1,6 @@
 import { Table } from "react-bootstrap";
 import ReservationItem from "./ReservationItem";
-const TableReservation = ({info}) => {
+const TableReservation = ({ reservation, games }) => {
   return (
     <Table className="pr-2">
       <thead className="thead-dark text-center">
@@ -10,17 +10,17 @@ const TableReservation = ({info}) => {
           <th scope="col">Dia</th>
           <th scope="col">People</th>
           <th scope="col">Games</th>
-          
         </tr>
       </thead>
       <tbody>
-        {info.map(({ id,horario , day, peopleCapacity }) => (
+        {reservation.map(({ id, horario, day, peopleCapacity }) => (
           <ReservationItem
             key={id}
-            id={id}
+            idR={id}
             horario={horario}
             day={day}
             peopleCapacity={peopleCapacity}
+            games={games}
           />
         ))}
       </tbody>

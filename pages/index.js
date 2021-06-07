@@ -1,21 +1,13 @@
-import { State,useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Image,
-  Form,
-  Button,
-} from "react-bootstrap";
+import { Container, Row, Col, Card, Image, Form, Alert } from "react-bootstrap";
 import Link from "next/link";
 import axios from "axios";
 import styles from "../styles/Home.module.css";
-import NavBar from "../components/Navbar";
 export default function Home() {
   const router = useRouter();
   const [data, setData] = useState({ email: "", password: "" });
+  const [error, setError] = useState();
 
   const apiPost = () => {
     axios
@@ -32,6 +24,7 @@ export default function Home() {
       })
       .catch((error) => {
         console.log(error.response.data);
+        setError(error.response.data);
       });
   };
   const handleChange = (event) => {
@@ -106,6 +99,22 @@ export default function Home() {
                             onChange={handleChange}
                           />
                         </Form.Group>
+                        {error ? (
+                          <div
+                            className="alert alert-warning alert-dismissible fade show"
+                            role="alert"
+                          >
+                            <strong>{error.error}</strong>
+                            <button
+                              type="button"
+                              className="close"
+                              data-dismiss="alert"
+                              aria-label="Close"
+                            >
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                        ) : null}
                         <Form.Control
                           name="login"
                           id="login"
